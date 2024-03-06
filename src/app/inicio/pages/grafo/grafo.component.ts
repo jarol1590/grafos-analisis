@@ -7,6 +7,6 @@ import { Component } from '@angular/core';
   templateUrl: './grafo.component.html',
   styles: ``
 })
-export class GrafoComponent {
+export default class GrafoComponent {
 
 }
