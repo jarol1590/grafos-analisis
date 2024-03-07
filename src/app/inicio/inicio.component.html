@@ -1,5 +1,31 @@
-<h1 class="text-3xl font-bold underline">
-    Inicio Works!
-  </h1>
+<!-- component -->
+<div class="my- mr-2 ml-2 mt-2 flex items-center justify-between py-3 bg-indigo-900 rounded-lg">
+  <!-- navbar -->
 
-  <router-outlet></router-outlet>
+  <div class="ml-2 flex space-x-5">
+    <div class="mb-1 text-xl text-white font-bold duration-300 hover:scale-105 hover:border-b-4 border-red-400 ">Inicio
+    </div>
+    <div class="mb-1 text-xl text-white font-bold duration-300 hover:scale-105 hover:border-b-4 border-red-400">Archivo
+    </div>
+
+    <div class="mb-1 text-xl text-white font-bold duration-300 hover:scale-105 hover:border-b-4 border-red-400">Editar
+    </div>
+
+    <div class="mb-1 text-xl text-white font-bold duration-300 hover:scale-105 hover:border-b-4 border-red-400">Ejecutar
+    </div>
+
+    <div class="mb-1 text-xl text-white font-bold duration-300 hover:scale-105 hover:border-b-4 border-red-400">
+      Herramientas</div>
+    <div class="mb-1 text-xl text-white font-bold duration-300 hover:scale-105 hover:border-b-4 border-red-400">Ventana
+    </div>
+    <div class="mb-1 text-xl text-white font-bold duration-300 hover:scale-105 hover:border-b-4 border-red-400">Ayuda
+    </div>
+  </div>
+</div>
+<div class="flex">
+  <app-sidemenu />
+  <div class="text-black flex-grow p-6 overflow-auto  bg-gray-200 w-screen ">
+    <router-outlet />
+  </div>
+  
+</div>
