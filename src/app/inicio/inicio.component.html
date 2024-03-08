@@ -13,6 +13,7 @@
 
         <div *ngIf="openSubMenu" class="absolute left-0 mt-2 w-48 bg-white shadow-md z-10">
           <div class="block px-4 py-2 text-gray-800 hover:bg-gray-200">
+            <!--Sub sub Menú Nuevo Grafo-->
             <div (click)="toggleNuevoGrafoSubMenu($event)" class="cursor-pointer text-black">
               <div class="flex items-center">
                 <span>Nuevo Grafo</span>
@@ -24,14 +25,19 @@
                 </span>
               </div>
             </div>
-            <div *ngIf="isNuevoGrafoSelected" class="absolute left-full top-0 mt-0 ml-2 w-48 bg-white shadow-md z-10">
-              <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Personalizado</a>
-              <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Aleatorio</a>
+            <div *ngIf="isNuevoGrafoSelected"
+              class="absolute left-full top-relative mt-0 ml-2 w-48 bg-white shadow-md z-10">
+              <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200 flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                  <circle cx="12" cy="12" r="10" />
+                </svg>&nbsp;<span>Personalizado</span></a>
+              <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200 flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                  <circle cx="12" cy="12" r="10" />
+                </svg>&nbsp;<span>Aleatorio</span></a>
             </div>
           </div>
-
-          <!--Sub sub Menú Nuevo Grafo-->
-
+          <!--Fin sub sub menu nuevo Grafo-->
           <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Abrir</a>
           <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Cerrar</a>
           <hr class="border-t border-gray-300">
@@ -48,12 +54,53 @@
             <span class="ml-2">Guardar Como</span>
           </a>
           <hr class="border-t border-gray-300">
-          <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Exportar Datos</a>
-          <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Importar Datos</a>
+          <div class="block px-4 py-2 text-gray-800 hover:bg-gray-200">
+            <!--Sub sub Menú Exportar Datos-->
+            <div (click)="toggleExportarDatosSubMenu($event)" class="cursor-pointer text-black">
+              <div class="flex items-center">
+                <span>Exportar Datos</span>
+                <span class="ml-auto">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16"
+                    height="16">
+                    <path d="M9 6l6 6-6 6" />
+                  </svg>
+                </span>
+              </div>
+            </div>
+            <div *ngIf="isExportarDatosSelected" class="absolute left-full top-relative mt-0 ml-2 w-48 bg-white shadow-md z-10">
+              <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200 flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                  <circle cx="12" cy="12" r="10" />
+                </svg>&nbsp;<span>Excel</span></a>
+              <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200 flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                  <circle cx="12" cy="12" r="10" />
+                </svg>&nbsp;<span>Imagen</span></a>
+            </div>
+          </div>
+          <div class="block px-4 py-2 text-gray-800 hover:bg-gray-200">
+            <div (click)="toggleEImportarDatosSubMenu($event)" class="cursor-pointer text-black">
+              <div class="flex items-center">
+                <span>Importar Datos</span>
+                <span class="ml-auto">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16"
+                    height="16">
+                    <path d="M9 6l6 6-6 6" />
+                  </svg>
+                </span>
+              </div>
+            </div>
+            <div *ngIf="isImportarDatosSelected" class="absolute left-full top-relative mt-0 ml-2 w-48 bg-white shadow-md z-10">
+              <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200 flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                  <circle cx="12" cy="12" r="10" />
+                </svg>&nbsp;<span>Archivo .txt</span></a>
+            </div>
+          </div>
           <hr class="border-t border-gray-300">
           <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Salir</a>
-
         </div>
+        <!--Fin sub menú Archivo-->
       </div>
     </div>
 
