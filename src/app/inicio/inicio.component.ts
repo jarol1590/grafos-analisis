@@ -14,17 +14,26 @@ export default class InicioComponent {
   openSubMenu: boolean = false;
   openSubSubMenu: boolean = false;
   isNuevoGrafoSelected: boolean = false;
-  isExportarDatosSelected: boolean =false;
-  isImportarDatosSelected: boolean =false;
+  isExportarDatosSelected: boolean = false;
+  isImportarDatosSelected: boolean = false;
+  lastOpenedSubMenu: string = "";
+  lastOpenedSubSubMenu: string = "";
 
-  
 
 
-  toggleSubMenu(event: MouseEvent): void {
+
+  toggleSubMenu(event: MouseEvent, subMenu: string): void {
+    if (this.openSubMenu && this.lastOpenedSubMenu !== subMenu) {
+      this.closeAllSubMenus();
+    }
     this.openSubMenu = !this.openSubMenu;
+    this.lastOpenedSubMenu = subMenu;
     event.stopPropagation(); // Para evitar que el clic se propague al hacer clic dentro del submenú
   }
-  toggleSubSubMenu(event: MouseEvent): void{
+  toggleSubSubMenu(event: MouseEvent, subMenu: string): void {
+    if (this.openSubSubMenu && this.lastOpenedSubMenu != subMenu) {
+      this.closeAllSubMenus();
+    }
     this.openSubSubMenu = !this.openSubSubMenu;
     event.stopPropagation();
   }
@@ -33,50 +42,61 @@ export default class InicioComponent {
     this.openSubMenu = false;
   }
 
-  closeSubSubMenu():void {
+  closeSubSubMenu(): void {
     this.openSubSubMenu = false;
   }
 
   toggleNuevoGrafoSubMenu(event: MouseEvent): void {
+    this.closeAllSubSubMenus();
     this.isNuevoGrafoSelected = !this.isNuevoGrafoSelected;
     event.stopPropagation(); // Para evitar que el clic se propague al hacer clic dentro del submenú
   }
 
-  toggleEImportarDatosSubMenu(event: MouseEvent): void{
+  toggleEImportarDatosSubMenu(event: MouseEvent): void {
+    this.closeAllSubSubMenus();
     this.isImportarDatosSelected = !this.isImportarDatosSelected;
     event.stopPropagation();
 
   }
 
-  closeNuevoGrafoSubMenu(): void{
+  closeNuevoGrafoSubMenu(): void {
     this.isNuevoGrafoSelected = false;
   }
 
   toggleExportarDatosSubMenu(event: MouseEvent): void {
-    this.isExportarDatosSelected= !this.isExportarDatosSelected;
+    this.closeAllSubSubMenus();
+    this.isExportarDatosSelected = !this.isExportarDatosSelected;
     event.stopPropagation();
   }
 
-  closeExportarDatosSubMenu():void{
+  closeExportarDatosSubMenu(): void {
     this.isExportarDatosSelected = false;
   }
 
-  closeImportarDatosSubMenu():void{
+  closeImportarDatosSubMenu(): void {
     this.isImportarDatosSelected = false;
   }
 
- 
+
 
   // si se da click en otro lugar cierra el submenu
   @HostListener('document:click', ['$event'])
   handleOutsideClick(event: MouseEvent) {
     if (!(event.target as HTMLElement).closest('.relative')) {
-      this.closeSubMenu();
-      this.closeSubSubMenu();
-      this.closeNuevoGrafoSubMenu();
-      this.closeExportarDatosSubMenu();
-      this.closeImportarDatosSubMenu();
+      this.closeAllSubMenus();
+      this.closeAllSubSubMenus();
     }
+  }
+
+  closeAllSubSubMenus():void{
+    this.closeSubSubMenu();
+    this.closeNuevoGrafoSubMenu();
+    this.closeExportarDatosSubMenu();
+    this.closeImportarDatosSubMenu();
+  }
+
+  closeAllSubMenus(): void {
+    this.closeSubMenu();  
   }
 
 }

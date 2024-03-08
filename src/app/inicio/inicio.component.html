@@ -7,11 +7,12 @@
     <div class="mb-1 text-l text-white font-bold duration-300 hover:scale-105 hover:border-b-4 border-red-400 ">Inicio
     </div>
     <div class="relative mb-1 text-l text-white font-bold duration-300 hover:scale-105 hover:border-b-4 border-red-400">
-      <div (click)="toggleSubMenu($event)" class="inline-block cursor-pointer">
+      <div (click)="toggleSubMenu($event, 'archivo')" class="inline-block cursor-pointer">
         Archivo
         <!--Sub Menú Archivo-->
 
-        <div *ngIf="openSubMenu" class="absolute left-0 mt-2 w-48 bg-white shadow-md z-10">
+        <div *ngIf="openSubMenu && lastOpenedSubMenu === 'archivo'"
+          class="absolute left-0 mt-2 w-48 bg-white shadow-md z-10">
           <div class="block px-4 py-2 text-gray-800 hover:bg-gray-200">
             <!--Sub sub Menú Nuevo Grafo-->
             <div (click)="toggleNuevoGrafoSubMenu($event)" class="cursor-pointer text-black">
@@ -67,7 +68,9 @@
                 </span>
               </div>
             </div>
-            <div *ngIf="isExportarDatosSelected" class="absolute left-full top-relative mt-0 ml-2 w-48 bg-white shadow-md z-10">
+            
+            <div *ngIf="isExportarDatosSelected"
+              class="absolute left-full top-relative mt-0 ml-2 w-48 bg-white shadow-md z-10">
               <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200 flex items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
                   <circle cx="12" cy="12" r="10" />
@@ -90,7 +93,8 @@
                 </span>
               </div>
             </div>
-            <div *ngIf="isImportarDatosSelected" class="absolute left-full top-relative mt-0 ml-2 w-48 bg-white shadow-md z-10">
+            <div *ngIf="isImportarDatosSelected"
+              class="absolute left-full top-relative mt-0 ml-2 w-48 bg-white shadow-md z-10">
               <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200 flex items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
                   <circle cx="12" cy="12" r="10" />
