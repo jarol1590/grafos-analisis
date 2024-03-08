@@ -11,46 +11,56 @@ import { CommonModule } from '@angular/common';
   styles: ``
 })
 export default class InicioComponent {
-
-  openSubMenu: boolean = false;
-  openSubSubMenu: boolean = false;
+  openSubMenuArchivo: boolean = false;
+  openSubMenuEditar: boolean = false;
   isNuevoGrafoSelected: boolean = false;
   isExportarDatosSelected: boolean = false;
   isImportarDatosSelected: boolean = false;
-  lastOpenedSubMenu: string = "";
-  lastOpenedSubSubMenu: string = "";
+  isNodoSelected: boolean = false;
+  isNodoEditarSelected: boolean = false;
+  
 
 
 
 
-  toggleSubMenu(event: MouseEvent, subMenu: string): void {
-    if (this.openSubMenu && this.lastOpenedSubMenu !== subMenu) {
-      this.closeAllSubMenus();
-    }
-    this.openSubMenu = !this.openSubMenu;
-    this.lastOpenedSubMenu = subMenu;
+  toggleSubMenuArchivo(event: MouseEvent): void {
+    this.closeAllSubMenus();
+    this.openSubMenuArchivo = !this.openSubMenuArchivo;
     event.stopPropagation(); // Para evitar que el clic se propague al hacer clic dentro del submenú
   }
-  toggleSubSubMenu(event: MouseEvent, subMenu: string): void {
-    if (this.openSubSubMenu && this.lastOpenedSubMenu != subMenu) {
-      this.closeAllSubMenus();
-    }
-    this.openSubSubMenu = !this.openSubSubMenu;
+
+  closeSubMenuArchivo(): void {
+    this.openSubMenuArchivo = false;
+  }
+
+  toggleSubMenuEditar(event: MouseEvent): void {
+    this.closeAllSubMenus();
+    this.openSubMenuEditar = !this.openSubMenuEditar;
     event.stopPropagation();
   }
 
-  closeSubMenu(): void {
-    this.openSubMenu = false;
-  }
-
-  closeSubSubMenu(): void {
-    this.openSubSubMenu = false;
+  closeSubMenuEditar(): void {
+    this.openSubMenuEditar = false;
   }
 
   toggleNuevoGrafoSubMenu(event: MouseEvent): void {
     this.closeAllSubSubMenus();
     this.isNuevoGrafoSelected = !this.isNuevoGrafoSelected;
     event.stopPropagation(); // Para evitar que el clic se propague al hacer clic dentro del submenú
+  }
+
+  closeNuevoGrafoSubMenu(): void {
+    this.isNuevoGrafoSelected = false;
+  }
+
+  toggleSubSubMenuNodo(event: MouseEvent): void {
+    this.closeAllSubSubMenus();
+    this.isNodoSelected = !this.isNodoSelected;
+    event.stopPropagation();
+  }
+
+  closeNodoSubMenu(): void {
+    this.isNodoSelected = false;
   }
 
   toggleEImportarDatosSubMenu(event: MouseEvent): void {
@@ -60,9 +70,9 @@ export default class InicioComponent {
 
   }
 
-  closeNuevoGrafoSubMenu(): void {
-    this.isNuevoGrafoSelected = false;
-  }
+  closeImportarDatosSubMenu(): void {
+    this.isImportarDatosSelected = false;
+  }  
 
   toggleExportarDatosSubMenu(event: MouseEvent): void {
     this.closeAllSubSubMenus();
@@ -74,9 +84,16 @@ export default class InicioComponent {
     this.isExportarDatosSelected = false;
   }
 
-  closeImportarDatosSubMenu(): void {
-    this.isImportarDatosSelected = false;
+  toggleNodoEditarSubMenu(event: MouseEvent): void{
+    this.isNodoEditarSelected = !this.isNodoEditarSelected;
+    event.stopPropagation();
   }
+
+  closeNodoEditarSubMenu():void{
+    this.isNodoEditarSelected = false;
+  }
+
+  
 
 
 
@@ -89,15 +106,18 @@ export default class InicioComponent {
     }
   }
 
-  closeAllSubSubMenus():void{
-    this.closeSubSubMenu();
+  closeAllSubSubMenus(): void {
     this.closeNuevoGrafoSubMenu();
     this.closeExportarDatosSubMenu();
     this.closeImportarDatosSubMenu();
+    this.closeNodoSubMenu();
+    this.closeNodoEditarSubMenu();
   }
 
   closeAllSubMenus(): void {
-    this.closeSubMenu();  
+    this.closeAllSubSubMenus();
+    this.closeSubMenuArchivo();
+    this.closeSubMenuEditar();
   }
 
   onFileSelected(event: any) {

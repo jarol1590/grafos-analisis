@@ -3,16 +3,15 @@
 
   <!-- navbar -->
 
-  <div class="ml-2 flex space-x-5" (click)="closeSubMenu">
+  <div class="ml-2 flex space-x-5">
     <div class="mb-1 text-l text-white font-bold duration-300 hover:scale-105 hover:border-b-4 border-red-400 ">Inicio
     </div>
     <div class="relative mb-1 text-l text-white font-bold duration-300 hover:scale-105 hover:border-b-4 border-red-400">
-      <div (click)="toggleSubMenu($event, 'archivo')" class="inline-block cursor-pointer">
+      <div (click)="toggleSubMenuArchivo($event)" class="inline-block cursor-pointer">
         Archivo
         <!--Sub Menú Archivo-->
 
-        <div *ngIf="openSubMenu && lastOpenedSubMenu === 'archivo'"
-          class="absolute left-0 mt-2 w-48 bg-white shadow-md z-10">
+        <div *ngIf="openSubMenuArchivo" class="absolute left-0 mt-2 w-48 bg-white shadow-md z-10">
           <div class="block px-4 py-2 text-gray-800 hover:bg-gray-200">
             <!--Sub sub Menú Nuevo Grafo-->
             <div (click)="toggleNuevoGrafoSubMenu($event)" class="cursor-pointer text-black">
@@ -28,10 +27,10 @@
             </div>
             <div *ngIf="isNuevoGrafoSelected"
               class="absolute left-full top-relative mt-0 ml-2 w-48 bg-white shadow-md z-10">
-              <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200 flex items-center">
+              <span class="block px-4 py-2 text-gray-800 hover:bg-gray-200 flex items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
                   <circle cx="12" cy="12" r="10" />
-                </svg>&nbsp;<span>Personalizado</span></a>
+                </svg>&nbsp;<span>Personalizado</span></span>
               <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200 flex items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
                   <circle cx="12" cy="12" r="10" />
@@ -39,8 +38,8 @@
             </div>
           </div>
           <!--Fin sub sub menu nuevo Grafo-->
-          <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200" (click)="fileInput.click()">Abrir</a>
-<input type="file" #fileInput style="display: none;" (change)="onFileSelected($event)">
+          <span class="block px-4 py-2 text-gray-800 hover:bg-gray-200" (click)="fileInput.click()">Abrir</span>
+          <input type="file" #fileInput style="display: none;" (change)="onFileSelected($event)">
 
           <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Cerrar</a>
           <hr class="border-t border-gray-300">
@@ -70,7 +69,7 @@
                 </span>
               </div>
             </div>
-            
+
             <div *ngIf="isExportarDatosSelected"
               class="absolute left-full top-relative mt-0 ml-2 w-48 bg-white shadow-md z-10">
               <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200 flex items-center">
@@ -110,8 +109,75 @@
       </div>
     </div>
 
-    <div class="mb-1 text-l text-white font-bold duration-300 hover:scale-105 hover:border-b-4 border-red-400">Editar
+
+    <div class="relative mb-1 text-l text-white font-bold duration-300 hover:scale-105 hover:border-b-4 border-red-400">
+      <div (click)="toggleSubMenuEditar($event)" class="inline-block cursor-pointer">
+        Editar
+        <div *ngIf="openSubMenuEditar" class="absolute left-0 mt-2 w-48 bg-white shadow-md z-10">
+          <div class="block px-4 py-2 text-gray-800 hover:bg-gray-200">
+            <span>Deshacer</span>
+          </div>
+          <div (click)="toggleSubSubMenuNodo($event)" class="cursor-pointer text-black">
+          <div class="block px-4 py-2 text-gray-800 hover:bg-gray-200 flex items-center">
+            <span>Nodo</span>
+            <span class="ml-auto">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16"
+                height="16">
+                <path d="M9 6l6 6-6 6" />
+              </svg>
+            </span>
+          </div>
+        </div>
+        <div *ngIf="isNodoSelected"
+        class="absolute left-full top-relative mt-0 ml-2 w-48 bg-white shadow-md z-10">
+        <span class="block px-4 py-2 text-gray-800 hover:bg-gray-200 flex items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+            <circle cx="12" cy="12" r="10" />
+          </svg>&nbsp;<span>Agregar</span>
+        </span>
+        <div (click)="toggleNodoEditarSubMenu($event)" class="cursor-pointer text-black">
+          <span class="block px-4 py-2 text-gray-800 hover:bg-gray-200 flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+              <circle cx="12" cy="12" r="10" />
+            </svg>&nbsp;<span>Editar</span>
+            <span class="ml-auto">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16"
+                height="16">
+                <path d="M9 6l6 6-6 6" />
+              </svg>
+            </span>
+          </span>
+        </div>
+        <div *ngIf="isNodoEditarSelected"
+        class="absolute left-full top-relative mt-0 ml-2 w-48 bg-white shadow-md z-10">
+        <span class="block px-4 py-2 text-gray-800 hover:bg-gray-200 flex items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+            <circle cx="12" cy="12" r="10" />
+          </svg>&nbsp;<span>Color</span>
+        </span>
+        <span class="block px-4 py-2 text-gray-800 hover:bg-gray-200 flex items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+            <circle cx="12" cy="12" r="10" />
+          </svg>&nbsp;<span>Etiqueta</span>
+        </span>
+        <span class="block px-4 py-2 text-gray-800 hover:bg-gray-200 flex items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+            <circle cx="12" cy="12" r="10" />
+          </svg>&nbsp;<span>Valor</span>
+        </span>
+
+
+        </div>
+        <span class="block px-4 py-2 text-gray-800 hover:bg-gray-200 flex items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+            <circle cx="12" cy="12" r="10" />
+          </svg>&nbsp;<span>Eliminar</span>
+        </span>
+        </div>
+      </div>
+      </div>
     </div>
+
 
     <div class="mb-1 text-l text-white font-bold duration-300 hover:scale-105 hover:border-b-4 border-red-400">Ejecutar
     </div>
