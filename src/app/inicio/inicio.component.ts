@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { SidemenuComponent } from '../shared/sidemenu/sidemenu.component';
 import { CommonModule } from '@angular/common';
@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
   styles: ``
 })
 export default class InicioComponent {
+
   openSubMenu: boolean = false;
   openSubSubMenu: boolean = false;
   isNuevoGrafoSelected: boolean = false;
@@ -97,6 +98,12 @@ export default class InicioComponent {
 
   closeAllSubMenus(): void {
     this.closeSubMenu();  
+  }
+
+  onFileSelected(event: any) {
+    const file = (event.target as HTMLInputElement).files?.[0];
+    // Aquí puedes manejar el archivo seleccionado
+    console.log('Archivo seleccionado:', file);
   }
 
 }

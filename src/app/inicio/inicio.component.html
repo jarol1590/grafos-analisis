@@ -39,7 +39,9 @@
             </div>
           </div>
           <!--Fin sub sub menu nuevo Grafo-->
-          <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Abrir</a>
+          <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200" (click)="fileInput.click()">Abrir</a>
+<input type="file" #fileInput style="display: none;" (change)="onFileSelected($event)">
+
           <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Cerrar</a>
           <hr class="border-t border-gray-300">
           <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200 flex items-center">
