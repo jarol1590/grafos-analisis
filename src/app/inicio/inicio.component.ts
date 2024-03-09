@@ -17,7 +17,9 @@ export default class InicioComponent {
   isExportarDatosSelected: boolean = false;
   isImportarDatosSelected: boolean = false;
   isNodoSelected: boolean = false;
+  isArcoSelected: boolean = false;
   isNodoEditarSelected: boolean = false;
+  isArcoEditarSelected: boolean = false;
   
 
 
@@ -53,16 +55,6 @@ export default class InicioComponent {
     this.isNuevoGrafoSelected = false;
   }
 
-  toggleSubSubMenuNodo(event: MouseEvent): void {
-    this.closeAllSubSubMenus();
-    this.isNodoSelected = !this.isNodoSelected;
-    event.stopPropagation();
-  }
-
-  closeNodoSubMenu(): void {
-    this.isNodoSelected = false;
-  }
-
   toggleEImportarDatosSubMenu(event: MouseEvent): void {
     this.closeAllSubSubMenus();
     this.isImportarDatosSelected = !this.isImportarDatosSelected;
@@ -93,7 +85,34 @@ export default class InicioComponent {
     this.isNodoEditarSelected = false;
   }
 
-  
+  toggleSubSubMenuNodo(event: MouseEvent): void {
+    this.closeAllSubSubMenus();
+    this.isNodoSelected = !this.isNodoSelected;
+    event.stopPropagation();
+  }
+
+  closeNodoSubMenu(): void {
+    this.isNodoSelected = false;
+  }
+
+  toogleSubSubMenuArco(event: MouseEvent): void{
+    this.closeAllSubSubMenus();
+    this.isArcoSelected = !this.isArcoSelected;
+    event.stopPropagation();
+  }
+
+  closeArcoSubMenu(): void{
+    this.isArcoSelected= false;
+  }
+
+  toggleArcoEditarSubMenu(event: MouseEvent): void{
+    this.isArcoEditarSelected = !this.isArcoEditarSelected;
+    event.stopPropagation();
+  }
+
+  closeArcoEditarSubMenu():void{
+    this.isArcoEditarSelected = false;
+  }
 
 
 
@@ -111,7 +130,9 @@ export default class InicioComponent {
     this.closeExportarDatosSubMenu();
     this.closeImportarDatosSubMenu();
     this.closeNodoSubMenu();
+    this.closeArcoSubMenu();
     this.closeNodoEditarSubMenu();
+    this.closeArcoEditarSubMenu();
   }
 
   closeAllSubMenus(): void {
