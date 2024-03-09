@@ -4,14 +4,12 @@
   <!-- navbar -->
 
   <div class="ml-2 flex space-x-5">
-    <div class="mb-1 text-l text-white font-bold duration-300 hover:scale-105 hover:border-b-4 border-red-400 ">Inicio
+    <div class="relative mb-1 text-l text-white font-bold duration-300 hover:scale-105 hover:border-b-4 border-red-400">Inicio
     </div>
     <!--Sub Menú Archivo-->
     <div class="relative mb-1 text-l text-white font-bold duration-300 hover:scale-105 hover:border-b-4 border-red-400">
       <div (click)="toggleSubMenuArchivo($event)" class="inline-block cursor-pointer">
         Archivo
-
-
         <div *ngIf="openSubMenuArchivo" class="absolute left-0 mt-2 w-48 bg-white shadow-md z-10">
           <div class="block px-4 py-2 text-gray-800 hover:bg-gray-200">
             <!--Sub sub Menú Nuevo Grafo-->
@@ -70,7 +68,6 @@
                 </span>
               </div>
             </div>
-
             <div *ngIf="isExportarDatosSelected"
               class="absolute left-full top-relative mt-0 ml-2 w-48 bg-white shadow-md z-10">
               <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200 flex items-center">
@@ -224,7 +221,6 @@
               </svg>&nbsp;<span>Eliminar</span>
             </span>
           </div>
-
         </div>
       </div>
     </div>
@@ -266,13 +262,38 @@
       </div>
     </div>
     <!--Fin Ejecutar-->
-
-    <div class="mb-1 text-l text-white font-bold duration-300 hover:scale-105 hover:border-b-4 border-red-400">
+    <div class="relative mb-1 text-l text-white font-bold duration-300 hover:scale-105 hover:border-b-4 border-red-400">
       Herramientas</div>
-    <div class="mb-1 text-l text-white font-bold duration-300 hover:scale-105 hover:border-b-4 border-red-400">Ventana
+    <!--Ventana-->
+    <div class="relative mb-1 text-l text-white font-bold duration-300 hover:scale-105 hover:border-b-4 border-red-400">
+      <div (click)="toggleSubMenuVentana($event)" class="inline-block cursor-pointer">
+        Ventana
+        <div *ngIf="openSubMenuVentana" class="absolute left-0 mt-2 w-48 bg-white shadow-md z-10">
+          <div class="block px-4 py-2 text-gray-800 hover:bg-gray-200">
+            <span>Gráfica</span>
+          </div>
+          <div class="block px-4 py-2 text-gray-800 hover:bg-gray-200">
+            <span>Ventana</span>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="mb-1 text-l text-white font-bold duration-300 hover:scale-105 hover:border-b-4 border-red-400">Ayuda
+    <!--Fin Ventana-->
+    <!--Ayuda-->
+    <div class="relative mb-1 text-l text-white font-bold duration-300 hover:scale-105 hover:border-b-4 border-red-400">
+      <div (click)="toggleSubMenuAyuda($event)" class="inline-block cursor-pointer">
+        Ayuda
+        <div *ngIf="openSubMenuAyuda" class="absolute left-0 mt-2 w-48 bg-white shadow-md z-10">
+          <div class="block px-4 py-2 text-gray-800 hover:bg-gray-200">
+            <span>Ayuda...</span>
+          </div>
+          <div class="block px-4 py-2 text-gray-800 hover:bg-gray-200">
+            <span>Acerca de Grafos</span>
+          </div>
+        </div>
+      </div>
     </div>
+    <!--Fin Ayuda-->
   </div>
 </div>
 <div class="flex">

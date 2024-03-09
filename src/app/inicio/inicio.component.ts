@@ -14,6 +14,8 @@ export default class InicioComponent {
   openSubMenuArchivo: boolean = false;
   openSubMenuEditar: boolean = false;
   openSubMenuEjecutar: boolean = false;
+  openSubMenuVentana: boolean = false;
+  openSubMenuAyuda: boolean = false;
   isNuevoGrafoSelected: boolean = false;
   isExportarDatosSelected: boolean = false;
   isImportarDatosSelected: boolean = false;
@@ -22,6 +24,7 @@ export default class InicioComponent {
   isNodoEditarSelected: boolean = false;
   isArcoEditarSelected: boolean = false;
   isProcesoSelected: boolean = false;
+  
   
 
 
@@ -135,7 +138,26 @@ export default class InicioComponent {
   closeProcesoSubMenu(): void{
     this.isProcesoSelected= false;
   }
+
+  toggleSubMenuVentana(event: MouseEvent): void {
+    this.closeAllSubMenus();
+    this.openSubMenuVentana = !this.openSubMenuVentana;
+    event.stopPropagation(); // Para evitar que el clic se propague al hacer clic dentro del submenú
+  }
+
+  closeSubMenuVentana(): void {
+    this.openSubMenuVentana = false;
+  }
   
+  toggleSubMenuAyuda(event: MouseEvent): void {
+    this.closeAllSubMenus();
+    this.openSubMenuAyuda = !this.openSubMenuAyuda;
+    event.stopPropagation(); // Para evitar que el clic se propague al hacer clic dentro del submenú
+  }
+
+  closeSubMenuAyuda(): void {
+    this.openSubMenuAyuda = false;
+  }
 
 
 
@@ -166,6 +188,8 @@ export default class InicioComponent {
     this.closeSubMenuArchivo();
     this.closeSubMenuEditar();
     this.closeSubMenuEjecutar();
+    this.closeSubMenuVentana();
+    this.closeSubMenuAyuda();
   }
 
   onFileSelected(event: any) {
