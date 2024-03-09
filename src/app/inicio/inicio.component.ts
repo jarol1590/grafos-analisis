@@ -13,6 +13,7 @@ import { CommonModule } from '@angular/common';
 export default class InicioComponent {
   openSubMenuArchivo: boolean = false;
   openSubMenuEditar: boolean = false;
+  openSubMenuEjecutar: boolean = false;
   isNuevoGrafoSelected: boolean = false;
   isExportarDatosSelected: boolean = false;
   isImportarDatosSelected: boolean = false;
@@ -20,6 +21,7 @@ export default class InicioComponent {
   isArcoSelected: boolean = false;
   isNodoEditarSelected: boolean = false;
   isArcoEditarSelected: boolean = false;
+  isProcesoSelected: boolean = false;
   
 
 
@@ -114,6 +116,29 @@ export default class InicioComponent {
     this.isArcoEditarSelected = false;
   }
 
+  toggleSubMenuEjecutar(event: MouseEvent): void {
+    this.closeAllSubMenus();
+    this.openSubMenuEjecutar = !this.openSubMenuEjecutar;
+    event.stopPropagation(); // Para evitar que el clic se propague al hacer clic dentro del submenú
+  }
+
+  closeSubMenuEjecutar(): void {
+    this.openSubMenuEjecutar = false;
+  }
+
+  toogleSubSubMenuProceso(event: MouseEvent): void{
+    this.closeAllSubSubMenus();
+    this.isProcesoSelected = !this.isProcesoSelected;
+    event.stopPropagation();
+  }
+
+  closeProcesoSubMenu(): void{
+    this.isProcesoSelected= false;
+  }
+  
+
+
+
 
 
   // si se da click en otro lugar cierra el submenu
@@ -133,12 +158,14 @@ export default class InicioComponent {
     this.closeArcoSubMenu();
     this.closeNodoEditarSubMenu();
     this.closeArcoEditarSubMenu();
+    this.closeProcesoSubMenu();
   }
 
   closeAllSubMenus(): void {
     this.closeAllSubSubMenus();
     this.closeSubMenuArchivo();
     this.closeSubMenuEditar();
+    this.closeSubMenuEjecutar();
   }
 
   onFileSelected(event: any) {
